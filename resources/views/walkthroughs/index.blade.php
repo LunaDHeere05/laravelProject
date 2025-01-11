@@ -17,7 +17,18 @@
                     @foreach($walkthroughs as $walkthrough)
                         <h3>{{ $walkthrough ->title }}</h3>
                         <p>{{ $walkthrough ->content }}</p>
-                        <small>Posted by {{ $walkthrough ->user->name}} at {{ $walkthrough ->created_at }}</small>
+                        <small>Posted by {{ $walkthrough ->user->name}} at {{ $walkthrough ->created_at->format('d/m/Y') }}</small>
+
+                        @auth
+                        @if($walkthrough->user_id == Auth::user()->id)
+                            <a href="{{route('walkthroughs.edit', $walkthrough->id)}}">Edit walkthrough</a>
+                        @else
+                            <a href="{{route('like', $walkthrough->id)}}">Like post</a>
+                        @endif
+                        <br>
+                        walkthrough has {{$walkthrough->likes()->count()}} likes
+                        <hr>
+                        @endauth
                     @endforeach
                 </div>
             </div>

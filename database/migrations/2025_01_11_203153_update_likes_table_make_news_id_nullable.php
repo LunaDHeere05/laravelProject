@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('likes', function (Blueprint $table) {
-            $table->id();
-            $table->integer('walkthrough_id');
-            $table->integer('news_id');
-            $table->integer('user_id');
-            $table->timestamps();
+        Schema::table('likes', function (Blueprint $table) {
+            $table->integer('news_id')->nullable()->change();
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('likes');
+        Schema::table('likes', function (Blueprint $table) {
+            $table->integer('news_id')->nullable(false)->change();
+        });
     }
 };

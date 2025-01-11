@@ -51,4 +51,14 @@ class User extends Authenticatable
 {
     return $this->is_admin; // Assuming the field is named 'is_admin'
 }
+
+public function walkthroughs()
+{
+    return $this->hasMany('App\Models\Walkthrough');
+}
+public function likes()
+{
+    return $this->hasMany('App\Models\Like');
+}
+
 }
