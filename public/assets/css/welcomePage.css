@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+/* // <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 900 */
+
+/* .raleway {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+} */
+
+
+.authentication_container{
+    background: url(/assets/images/background_welcome.jpg) no-repeat center;
+    height: 100vh;
+    display: flex;
+    justify-items: center;
+}
+
+.authentication_box{
+    background-color: rgba(128, 128, 128, 0.250);
+    backdrop-filter: blur(20px);
+    color: white;
+    font-family: "Raleway", sans-serif;
+    font-weight: 200;
+    width: 34%;
+    height: 40vh;
+    margin: auto;
+    align-content: center;
+    text-align: center;
+    padding: 2em;
+}
+.authentication_box h1, h2{
+    font-weight: 500;
+    margin-bottom: 0.6em;
+}
+.authentication_box h1{
+    font-size: 38px;
+}
+.authentication_box h2{
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.authentication_btn_box{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 2em auto 0em auto;
+}
+.signUp_btn, .logIn_btn{
+    background-color: #999eb3;
+    border-radius: 12px;
+    padding: 0.3em;
+    font-size: 30px;
+    width: 40%;
+}
+.signUp_btn a , .logIn_btn a{
+    text-decoration: none;
+    color: white;
+}

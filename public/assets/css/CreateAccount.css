@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Raleway", sans-serif;
+}
+body {
+    margin: 0;
+    height: 100vh; /* Full viewport height */
+    width: 100vw;  /* Full viewport width */
+    overflow: hidden;
+    background: url(/assets/images/ps5_controller.jpg) center center no-repeat;
+    background-size: cover; /* Ensure full coverage */
+}
+
+.create_container{
+    background-color: rgba(128, 128, 128, 0.250);
+    backdrop-filter: blur(20px);
+    width: 40%;
+    height: 100%;
+    position: absolute;
+    right: 0vh;
+    color: white;
+}
+
+.create_container h1, .create_container h2{
+    text-align: center;
+    margin: 1em 0em 0em 0em;
+}
+.create_container h1{
+    font-size: 38px;
+    font-weight: 500;
+}
+.create_container h2{
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 200;
+}
+
+.login_systems{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5em;
+}
+.login_systems p{
+    font-weight: bold;
+    font-size: 17px;
+    padding: 1.5em 1.5em 1.5em 0em;
+}
+
+.login_systems input{
+    background-color: transparent;
+    width: 90%;
+    height: 2em;
+    border-radius: 12px;
+    border: 3px solid #9217ae;
+}
+.login_systems div{
+    width: 80%;
+    align-content: center;
+    margin: 0em auto;
+}
+.names_container{
+    display: flex;
+}
+
+/* login pagina */
+.remember_forgot{
+    display: flex;
+    padding-top: 2em;
+}
+.remember_forgot p{
+    font-weight: 200;
+    width: 11em;
+    padding-left: 1.5em;
+}
+.forgot_password p{
+    text-decoration:underline;
+    text-align: right;
+}
+.remember input{
+    background-color: purple;
+    width: 1.5em;
+    margin: auto 0em;
+}
+.remember{
+    display: flex;
+}
