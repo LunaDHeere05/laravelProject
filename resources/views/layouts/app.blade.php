@@ -25,7 +25,10 @@
                 </a>
 
                 @auth
-                <a href="{{ route('walkthroughs.create')}}">New walkthrough</a>
+                <a href="{{ route('walkthroughs.create')}}">New walkthrough</a> 
+                    @if(Auth::user()->is_admin == 'true')
+                    <a href="{{ route('posts.create')}}">New News post</a>
+                    @endif
                 @endauth
                 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

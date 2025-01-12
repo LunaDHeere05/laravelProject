@@ -6,19 +6,25 @@ use Illuminate\Http\Request;
 use App\Models\Walkthrough;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Post;
 
 class WalkthroughController extends Controller
 {
 
     public function __construct(){
-        $this->middleware('auth')->except('index');
+        $this->middleware('auth')->except('index', 'show');
     }
 
+    public function show($id){
+        $walkthrough = Walkthrough::findOrFail($id);
+        return view('walkthroughs.show', compact('walkthrough'));
+    }
 
     public function index(){
 
+        $posts = Post::latest()->get();
         $walkthroughs = Walkthrough::latest()->get(); // gaat alle walkthroughs ophalen uit de database
-        return view('walkthroughs.index', compact('walkthroughs'));
+        return view('walkthroughs.index', compact('posts','walkthroughs'));
     }
 
     public function create(){
@@ -71,6 +77,16 @@ class WalkthroughController extends Controller
         $walkthrough->save();
 
         return redirect()->route('index')->with('status', 'Walkthrough updated!');
+    }
+
+    public function destroy($id){
+        if(!Auth::user()->is_admin){
+            abort(403, 'only admins can delete walkthroughs');
+        }
+        $walkthrough = Walkthrough::findOrFail($id);
+        $walkthrough->delete();
+
+        return redirect()->route('index')->with('status', 'Walkthrough deleted!');
     }
 }
 
