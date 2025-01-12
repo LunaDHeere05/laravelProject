@@ -8,7 +8,7 @@
                 <div class="card-header">Edit Profile</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('users.update', $user->id) }}">
+                    <form method="POST" action="{{ route('users.update', $user->id) }}" enctype="multipart/form-data">   
                         @csrf
                         @method('PUT')
 
@@ -61,6 +61,20 @@
                                 <input id="date_birth" type="date" class="form-control @error('date_birth') is-invalid @enderror" name="date_birth" value="{{ $user->date_birth }}" required>
 
                                 @error('date_birth')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="picture" class="col-md-4 col-form-label text-md-end">my profile picture</label>
+
+                            <div class="col-md-6">
+                                <input id="picture" type="file" class="form-control @error('picture') is-invalid @enderror" name="picture" value="{{ $user->picture }}" accept="image/*" required >
+
+                                @error('picture')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

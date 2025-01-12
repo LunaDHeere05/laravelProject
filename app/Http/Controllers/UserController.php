@@ -36,7 +36,7 @@ class UserController extends Controller
         'name' => 'required|min:3',
         'email' => 'required|email',
         'abt_me' => 'nullable|min:20',
-        'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'picture' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
         'date_birth' => 'nullable|date',
     ]);
 
@@ -45,6 +45,11 @@ class UserController extends Controller
     $user->name = $validated['name'];
     $user->email = $validated['email'];
     $user->abt_me = $validated['abt_me'];
+    
+    if($request->hasFile('picture')){
+        $path = $request->file('picture')->store('profile_picture', 'public');
+        $user->picture = $path;
+    }
 
     $user->save();
 

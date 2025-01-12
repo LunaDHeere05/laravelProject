@@ -23,6 +23,11 @@
                         <a href="{{route('walkthroughs.show', $walkthrough->id)}}">{{$walkthrough->title}}</a><br>
                     @endforeach
 
+                    <h2>Picture</h2>
+
+                    
+                    <img src="{{asset('storage/'.$user->picture)}}" alt="Profile picture" style="width: 100px; height: 100px;">
+
                     @auth
                         <a href="{{route('users.edit', $user->id)}}">Edit profile</a>
                     @endauth

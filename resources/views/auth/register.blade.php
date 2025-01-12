@@ -1,14 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('assets/css/register.css') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+<div class="body">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">{{ __('Create an account') }}</div>
+                <h3>AND UNLEASH THE GAMER WITHIN YOU</h3>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                <div class="form">
+                    <form method="POST" action="{{ route('register') }}" class="actual_form">
                         @csrf
 
                         <div class="row mb-3">
@@ -67,6 +77,9 @@
                                     {{ __('Register') }}
                                 </button>
                             </div>
+                            <div class="guest">
+                                <a href="{{route('walkthroughs.index')}}"><p>Continue as guest</p></a>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -74,4 +87,6 @@
         </div>
     </div>
 </div>
+</div>
+
 @endsection
