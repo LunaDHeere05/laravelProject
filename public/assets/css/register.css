@@ -57,6 +57,11 @@ input{
     width: 100%;
     background-color: transparent;
     margin: 0.7em auto 1.5em auto;
+    color: white;
+}
+input:focus{
+    outline: none;
+    color: white;
 }
 .form{
     margin: 2em auto 0em auto;
@@ -100,7 +105,37 @@ input{
     display: flex;
     width: 100%;
 }
+.col-md-8.offset-md-4{
+    width: 100%;
+}
+.login_btn{
+    width: 100%;
+    background-color: red;
+}
 .col-md-6.offset-md-4{
     width: 100%;
 }
 
+.acc_link, .btn.btn-link{
+    color: white;
+    font-weight: 400;
+    font-size: 12px;
+    font-family: "open sans", sans-serif;
+    text-align: right;
+    justify-self: flex-end;
+}
+
+.form-check{
+    display: flex;
+    flex-direction: row;
+}
+.form-check-input{
+    width: 1em;
+    margin: 0;
+}
+.form-check label{
+    margin: auto 0em auto 0.5em;
+    font-family: "open sans", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}

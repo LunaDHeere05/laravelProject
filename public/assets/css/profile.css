@@ -1,0 +1,110 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "open sans", sans-serif;
+}
+
+html, body{
+    background-color: #f2f2f2;
+    margin-left: 2.4em;
+}
+
+.nav-item a, .navbar, .navbar-brand, .navbar-toggler{
+    display: none;
+}
+
+.card-body{
+    display: flex;
+}
+.pfpAndName{
+    display: flex;
+    margin: 3em 0em;
+}
+.nameAndEmail{
+    margin: 1em 0em auto 1em;
+    
+}
+.nameAndEmail h2{
+    font-size: 42px;
+}
+.profile-picture {
+    width: 10.9em;
+    height: 10.9em;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profileAndNav{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    justify-content: space-between;
+}
+
+.profileAndNav li{
+    list-style-type: none;
+    margin: 1em 0em;
+    font-weight: 350;
+    font-size: 29px;
+}
+
+
+.pfpCard-header{
+    display: flex;
+    background-color: #fafafa;
+    justify-content: space-between;
+    height: 3em;
+}
+.pfpCard-header h3{
+    margin: auto 0em auto 1em;
+    font-size: 24px;
+    color: #9217ae;
+}
+.pfpCard-body{
+    font-size: 17px;
+    margin: 2em 1em 0em 1em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.user-title{
+    display: flex;
+    flex-direction: column;
+    color: #9217ae;
+    font-size: 24px;
+}
+.user-title p, .user-info p{
+    margin-bottom: 1em;
+}
+.user-info{
+    display: grid;
+}
+.full-width {
+    grid-column: span 2;
+}
+.full-width .title{
+    color: #9217ae;
+    font-size: 24px;
+}
+
+.edit_btn{
+    width: 9%;
+    height: 65%;
+    margin: auto 0em;
+    display: flex;
+    text-decoration: none;
+    border-radius: 34px;
+    border: 1px solid #9217ae;
+    margin-right: 1em;
+
+}
+.edit_btn p{
+    margin: auto;
+}
+.profileInfo{
+    width: 50%;
+    height: 65%;
+    position: absolute;
+    right: 15%;
+    top: 27%;
+    background-color: white;
+}

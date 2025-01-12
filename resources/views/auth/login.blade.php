@@ -1,14 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('assets/css/register.css') }}">
+
+<div class="body">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">{{ __('Welcome back') }}</div>
+                <h3>YOU'VE BEEN MISSED</h3>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                <div class="form">
+                    <form method="POST" action="{{ route('login') }}" class="acual_form">
                         @csrf
 
                         <div class="row mb-3">
@@ -37,6 +41,11 @@
                                     </span>
                                 @enderror
                             </div>
+                            @if (Route::has('password.request'))
+                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        {{ __('Forgot Your Password?') }}
+                                    </a>
+                                @endif
                         </div>
 
                         <div class="row mb-3">
@@ -56,12 +65,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
+                            </div>
+                            <div class="guest">
+                                <a href="{{route('walkthroughs.index')}}"><p>Continue as guest</p></a>
                             </div>
                         </div>
                     </form>
@@ -69,5 +75,6 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection
