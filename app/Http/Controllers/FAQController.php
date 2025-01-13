@@ -1,10 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\FAQ; 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class FAQController extends Controller
 {
@@ -13,29 +13,35 @@ class FAQController extends Controller
     }
 
     public function index(){
-        $FAQs = FAQ::all();
-        return view('FAQ.index', compact('FAQs'));
+        $FAQsByCategory = FAQ::all()->groupBy('category');
+        return view('FAQ.index', compact('FAQsByCategory'));
     }
 
-    // public function create(){
-    //     return view('components.FAQ.create');
-    // }
+    public function create(){
+        return view('FAQ.create');
+    }
 
-    // public function store(Request $request){
-    //     // Validate the form input
-    //     $validated = $request->validate([
-    //         'question' => 'required|min:5|max:255',
-    //         'answer' => 'required|min:10',
-    //     ]);
+    public function store(Request $request)
+{
+    Log::info('Store method reached');
 
-    //     $FAQ = new FAQ();
-    //     $FAQ->question = $validated['question'];
-    //     $FAQ->answer = $validated['answer'];
-    //     $FAQ->user_id = Auth::user()->id;
-    //     $FAQ->save();
+        // Validate the form input
+        $validated = $request->validate([
+            'question' => 'required|min:1|max:255',
+            'answer' => 'required|min:1',
+            'category' => 'nullable|string|max:255',
+        ]);
 
-    //     return redirect()->route('FAQ.index')->with('status', 'FAQ added!');
-    // }
+        $FAQ = new FAQ();
+        $FAQ->question = $validated['question'];
+        $FAQ->answer = $validated['answer'];
+        $FAQ->category = $validated['category'];
+
+        $FAQ->save();
+
+        return redirect()->route('FAQ.index')->with('status', 'FAQ added!');
+}
+
 
     public function destroy($id){
         $FAQ = FAQ::findOrFail($id);

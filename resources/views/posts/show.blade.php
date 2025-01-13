@@ -2,6 +2,7 @@
 
 @section('content')
 <link rel="stylesheet" href="{{ asset('assets/css/news.css') }}">
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -42,12 +43,12 @@
                     {!! preg_replace('/\*\*(.*?)\*\*/', '<span class="highlighted-text">$1</span>', $post->content) !!}
                 </div>
 
-                        @auth
+                    @auth
                         @if($post->user_id == Auth::user()->id)
                         @else
-                            <a href="{{route('like', $post->id)}}">Like post</a>
+                            <a href="{{ route('like.post', $post->id) }}">Like post</a>
                         @endif
-                        @endauth
+                    @endauth
                 </div>
             </div>
         </div>

@@ -40,17 +40,19 @@
                     </a>
                     @endauth
                 </li>
-                <li><a href="{{route('FAQs.index')}}">FAQ</a></li>
+                <li><a href="{{route('FAQ.index')}}">FAQ</a></li>
                 <li><a href="{{route('contacts.index')}}">Contact</a></li>
 
                 @auth
                 @if(Auth::user()->is_admin)
-                <li><a href="{{route('admin.index')}}">userManagement</a></li>
+                <li><a href="{{route('admin.index')}}">Users</a></li>
                 @endif
                 @endauth
 
+                @unless(Auth::check())
                 <li><a href="{{route('login')}}">login</a></li>
                 <li><a href="{{route('register')}}">register</a></li>
+                @endunless
                 </ul>
             </div>
         </nav>

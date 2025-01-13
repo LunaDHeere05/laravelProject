@@ -16,4 +16,7 @@ class like extends Model
     public function walkthrough(){
         return $this->belongsTo('App\Models\Walkthrough');
     }
+    public function post(){
+        return $this->belongsTo('App\Models\Post');
+    }
 }

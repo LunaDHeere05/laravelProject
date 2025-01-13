@@ -17,6 +17,8 @@ Route::get('/', [WalkthroughController::class, 'index'])->name('index');
 Route::resource('walkthroughs', WalkthroughController::class);
 
 Route::get('like/{walkthroughId}', [LikeController::class, 'like'])->name('like');
+Route::get('like-post/{postId}', [LikeController::class, 'likePost'])->name('like.post');
+
 Route::get('user/{name}', [UserController::class, 'profile'])->name('profile');
 
 Auth::routes();
@@ -31,7 +33,7 @@ Route::resource('users', UserController::class);
 
 Route::resource('posts', PostController::class);
 
-Route::resource('FAQs', FAQController::class);
+Route::resource('FAQ', FAQController::class);
 
 Route::resource('contacts', ContactController::class);
 
