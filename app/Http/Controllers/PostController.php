@@ -11,7 +11,7 @@ class PostController extends Controller
 {
     public function index(){
 
-        $posts = Post::latest()->get(); // gaat alle walkthroughs ophalen uit de database
+        $posts = Post::latest()->take(5)->get(); // gaat alle walkthroughs ophalen uit de database
         return view('walkthroughs.index', compact('walkthroughs'));
     }
 
@@ -23,12 +23,19 @@ class PostController extends Controller
         $validated = $request->validate([
             'title'=>'required|min:3',
             'content'=>'required|min:20',
+            'cover_picture'=>'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $post = new Post();
         $post->title = $validated['title'];
         $post->content = $validated['content'];
         $post->user_id = Auth::user()->id;
+
+        if ($request->hasFile('cover_picture')) {
+            $path = $request->file('cover_picture')->store('newsPosts', 'public');
+            $post->cover_picture = $path;
+        }
+    
         $post->save();
 
         return redirect()->route('index')->with('status', 'post created!');
@@ -56,17 +63,16 @@ class PostController extends Controller
         $validated = $request->validate([
             'title'=>'required|min:3',
             'content'=>'required|min:20',
+            'cover_picture'=>'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        if ($request->has('title')) {
-            $post->title = $validated['title'];
-        }elseif($request->has('content')) {
-            $post->content = $validated['content'];
-        }elseif($request->has('title') && $request->has('content')){
-            $post->title = $validated['title'];
-            $post->content = $validated['content'];
-        }else{
-            return redirect()->back()->with('status', 'Nothing changed!');
+        $post->title = $validated['title'];
+        $post->content = $validated['content'];
+    
+        // Update cover cover_picture if a new file is uploaded
+        if ($request->hasFile('cover_picture')) {
+            $path = $request->file('cover_picture')->store('walkthroughPosts', 'public');
+            $post->cover_picture = $path;
         }
         $post->save();
 

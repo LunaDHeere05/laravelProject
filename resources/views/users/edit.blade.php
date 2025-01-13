@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('assets/css/edit.css') }}">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -44,7 +45,7 @@
                             <label for="abt_me" class="col-md-4 col-form-label text-md-end">About Me</label>
 
                             <div class="col-md-6">
-                                <textarea id="abt_me" class="form-control @error('abt_me') is-invalid @enderror" name="abt_me" required>{{ $user->abt_me }}</textarea>
+                                <textarea id="abt_me" class="form-control @error('abt_me') is-invalid @enderror" name="abt_me">{{ $user->abt_me }}</textarea>
 
                                 @error('abt_me')
                                     <span class="invalid-feedback" role="alert">
@@ -58,7 +59,7 @@
                             <label for="date_birth" class="col-md-4 col-form-label text-md-end">my birthday</label>
 
                             <div class="col-md-6">
-                                <input id="date_birth" type="date" class="form-control @error('date_birth') is-invalid @enderror" name="date_birth" value="{{ $user->date_birth }}" required>
+                                <input id="date_birth" type="date" class="form-control @error('date_birth') is-invalid @enderror" name="date_birth" value="{{ $user->date_birth }}">
 
                                 @error('date_birth')
                                     <span class="invalid-feedback" role="alert">
@@ -72,7 +73,7 @@
                             <label for="picture" class="col-md-4 col-form-label text-md-end">my profile picture</label>
 
                             <div class="col-md-6">
-                                <input id="picture" type="file" class="form-control @error('picture') is-invalid @enderror" name="picture" value="{{ $user->picture }}" accept="image/*" required >
+                                <input id="picture" type="file" class="form-control @error('picture') is-invalid @enderror" name="picture" value="{{ $user->picture }}" accept="image/*" >
 
                                 @error('picture')
                                     <span class="invalid-feedback" role="alert">

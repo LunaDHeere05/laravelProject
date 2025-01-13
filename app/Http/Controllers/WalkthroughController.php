@@ -35,6 +35,7 @@ class WalkthroughController extends Controller
         $validated = $request->validate([
             'title'=>'required|min:3',
             'content'=>'required|min:20',
+            'cover_picture'=>'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $walkthrough = new Walkthrough();
@@ -53,31 +54,37 @@ class WalkthroughController extends Controller
         }
         return view('walkthroughs.edit', compact('walkthrough'));
     }
-    public function update($id, Request $request){
-        $walkthrough = Walkthrough::findOrFail($id);
-        if($walkthrough->user_id != Auth::user()->id){
-            abort(403);
-        }
-
-        $validated = $request->validate([
-            'title'=>'required|min:3',
-            'content'=>'required|min:20',
-        ]);
-
-        if ($request->has('title')) {
-            $walkthrough->title = $validated['title'];
-        }elseif($request->has('content')) {
-            $walkthrough->content = $validated['content'];
-        }elseif($request->has('title') && $request->has('content')){
-            $walkthrough->title = $validated['title'];
-            $walkthrough->content = $validated['content'];
-        }else{
-            return redirect()->back()->with('status', 'Nothing changed!');
-        }
-        $walkthrough->save();
-
-        return redirect()->route('index')->with('status', 'Walkthrough updated!');
+    public function update($id, Request $request)
+{
+    $walkthrough = Walkthrough::findOrFail($id);
+    if ($walkthrough->user_id != Auth::user()->id) {
+        abort(403);
     }
+
+    $validated = $request->validate([
+        'title' => 'required|min:3',
+        'content' => 'required|min:20',
+        'cover_picture' => 'image|mimes:jpeg,png,jpg|max:2048',
+    ]);
+
+    if ($request->has('title')) {
+        $walkthrough->title = $validated['title'];
+    }
+
+    if ($request->has('content')) {
+        $walkthrough->content = $validated['content'];
+    }
+
+    if ($request->hasFile('cover_picture')) {
+        $path = $request->file('cover_picture')->store('walkthroughs', 'public');
+        $walkthrough->cover_picture = $path;
+    }
+
+    $walkthrough->save();
+
+    return redirect()->route('index')->with('status', 'Walkthrough updated!');
+}
+
 
     public function destroy($id){
         if(!Auth::user()->is_admin){

@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "open sans", sans-serif;
+}
+.title{
+    font-size: 2em;
+    font-weight: 700;
+    text-align: center;
+}
+.image-container{
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+.image-container img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.postedBy{
+    display: flex;
+    justify-content: space-between;
+    margin: auto 0em;
+}
+.profile{
+    display: flex;
+    margin-bottom: 1.5em;
+    margin-top: 2em;
+}
+.profile a{
+    margin: auto 0em auto 0.2em;
+}
+.profile p{
+    margin: auto 0em auto 1em;
+}
+.post-date{
+    margin-bottom: 1em;
+}
+.cover_picture{
+    width: 100%; 
+    height: 60vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3em;
+}
+.cover_picture img{
+    width: 100%; 
+    height: auto;
+    object-fit: cover;
+}
+.actions{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto 0em;
+}
+.body{
+    margin: 0 auto;
+    width: 70%;
+}
+.edit_btn, .delete_btn{
+    width: 10em;
+    height: 2em;
+    margin: auto 1em;
+    display: flex;
+    text-decoration: none;
+    border-radius: 34px;
+    border: 1px solid #9217ae;
+
+}
+.edit_btn p{
+    margin: auto;
+    color: #9217ae;
+}
+.delete_btn{
+    color: red;
+    border: 1px solid red;
+    background-color: transparent;
+}
+.highlighted-text{
+    color: #9217ae;
+    font-weight: bold;
+}

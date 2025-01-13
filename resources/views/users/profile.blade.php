@@ -26,14 +26,14 @@
                         <p>{{$user->email}}</p>
                         </div>
                     </div>
-                    <nav>
+                    <div class="profileNav">
                             <ul>
                                 <li style="color:#9217ae"><b>User information</b></li>
                                 <li>Consoles</li>
                                 <li>Game collection</li>
                                 <li>Walkthroughs</li>
                             </ul>
-                    </nav>
+</div>
                 </div>
 
                     <div class="profileInfo">
@@ -42,24 +42,36 @@
                             @auth
                             @if(Auth::user()->id == $user->id)
                                 <a href="{{route('users.edit', $user->id)}}" class="edit_btn"><p>Edit</p></a>
+                                @auth
+                                <form method="POST" action="{{ route('logout') }}" class="logout-form">
+                                 @csrf
+                                    <button type="submit" class="btn btn-danger">Logout</button>
+                                </form>
+                    @endauth
                             @endif
                             @endauth
                         </div>
                         <div class="pfpCard-body">
                             <div class="user-title">
                                 <p>Username</p>
+                                @if($user->date_birth)
                                 <p>Date of birth</p>
+                                @endif
                                 <p>E-mail</p>
                             </div>
                             <div class="user-info">
                                 <p>{{$user->name}}</p>
+                                @if($user->date_birth)
                                 <p>{{$user->date_birth}}</p>
+                                @endif
                                 <p>{{$user->email}}</p>
                             </div>
+                            @if($user->abt_me)
                             <div class="full-width">
                                 <p class="title">About me</p>
                                 <p>{{$user->abt_me}}</p>
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>

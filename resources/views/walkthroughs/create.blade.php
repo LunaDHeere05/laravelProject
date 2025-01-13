@@ -8,7 +8,7 @@
                 <div class="card-header">Create new walkthrough</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('walkthroughs.store') }}">
+                    <form method="POST" action="{{ route('walkthroughs.store') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-3">
@@ -30,6 +30,22 @@
                             <div class="col-md-6">
                                 <textarea name="content" required>{{ old('content')}}</textarea>
                                 @error('content')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="cover_picture" class="col-md-4 col-form-label text-md-end">Add Picture</label>
+
+                            <div class="col-md-6">
+                                <input id="cover_picture" type="file" 
+                                    class="form-control @error('cover_picture') is-invalid @enderror" 
+                                    name="cover_picture" 
+                                    accept="image/*">
+                                
+                                @error('cover_picture')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

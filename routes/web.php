@@ -7,6 +7,9 @@ use App\Http\Controllers\WalkthroughController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\FAQController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\UserManagementController;
 
 
 Route::get('/', [WalkthroughController::class, 'index'])->name('index');
@@ -18,9 +21,19 @@ Route::get('user/{name}', [UserController::class, 'profile'])->name('profile');
 
 Auth::routes();
 
+Route::middleware('auth')->group(function () {
+    Route::get('/admin', [UserManagementController::class, 'index'])->name('admin.index');
+    Route::post('/admin', [UserManagementController::class, 'store'])->name('admin.store');
+    Route::post('/admin/promote/{id}', [UserManagementController::class, 'promote'])->name('admin.promote');
+});
+
 Route::resource('users', UserController::class);
 
 Route::resource('posts', PostController::class);
+
+Route::resource('FAQs', FAQController::class);
+
+Route::resource('contacts', ContactController::class);
 
 Route::get('/home', [WalkthroughController::class, 'index'])->name('index');
 
