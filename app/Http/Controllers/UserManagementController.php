@@ -34,8 +34,8 @@ class UserManagementController extends Controller
         ]);
 
         User::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
+            'name' => strip_tags($validated['name']),
+            'email' => strip_tags($validated['email']),
             'password' => Hash::make($validated['password']),
             'is_admin' => $request->has('is_admin') ? 1 : 0,
         ]);

@@ -22,7 +22,7 @@
 
                                 @error('title')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ e($message) }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -31,10 +31,10 @@
                             <label for="content" class="col-md-4 col-form-label text-md-end">Content</label>
 
                             <div class="col-md-6">
-                                <textarea name="content" required>{{ $walkthrough->content}}</textarea>
+                                <textarea name="content" required>{{ e($walkthrough->content)}}</textarea>
                                 @error('content')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ e($message) }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -50,7 +50,7 @@
                                 
                                 @error('cover_picture')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ e($message) }}</strong>
                                     </span>
                                 @enderror
                             </div>

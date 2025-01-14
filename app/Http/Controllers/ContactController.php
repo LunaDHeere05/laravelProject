@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use App\Models\User;
+use App\Mail\ContactFormSubmitted;
+use Illuminate\Support\Facades\Mail;
+use Illumniate\Support\Facades\Auth;
 
 class ContactController extends Controller
 {
@@ -16,6 +20,7 @@ class ContactController extends Controller
     {
         $validated = $request->validate([
             'message' => 'required|string|max:1000',
+            
         ]);
     
         $adminEmails = User::where('is_admin', 1)->pluck('email');
@@ -25,6 +30,6 @@ class ContactController extends Controller
             Mail::to($email)->send(new ContactFormSubmitted($validated));
         }
     
-        return redirect()->route('contact.create')->with('status', 'Your message has been sent!');
+        return redirect()->route('contacts.index')->with('status', 'Your message has been sent!');
     }
 }

@@ -8,14 +8,14 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{$walkthrough->title}}</div>
+                <div class="card-header">{{e($walkthrough->title)}}</div>
 
                 <div class="card-body">
                     <small>Posted by 
                         <a href="{{route('profile', $walkthrough->user->name)}}">
-                            {{ $walkthrough->user->name }}
+                            {{ e($walkthrough->user->name) }}
                         </a> 
-                        at {{ $walkthrough->created_at->format('d/m/Y') }}
+                        at {{ e($walkthrough->created_at->format('d/m/Y')) }}
                     </small>
                     <br>
                     {{$walkthrough->content}}
@@ -26,7 +26,7 @@
                             <a href="{{route('like', $walkthrough->id)}}">Like post</a>
                         @endif
                         <br>
-                        walkthrough has {{$walkthrough->likes()->count()}} likes
+                        walkthrough has {{e($walkthrough->likes()->count())}} likes
                         <hr>
                     @endauth
 

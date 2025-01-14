@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('assets/css/edit.css') }}">
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -19,7 +21,7 @@
 
                                 @error('title')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ e($message) }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -31,7 +33,7 @@
                                 <textarea name="content" required>{{ old('content')}}</textarea>
                                 @error('content')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ e($message) }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -47,7 +49,7 @@
                                 
                                 @error('cover_picture')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ e($message) }}</strong>
                                     </span>
                                 @enderror
                             </div>

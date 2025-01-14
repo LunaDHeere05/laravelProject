@@ -22,7 +22,7 @@
                             <label for="message">Message</label>
                             <textarea class="form-control @error('message') is-invalid @enderror" name="message" required>{{ old('message') }}</textarea>
                             @error('message')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                                <div class="invalid-feedback">{{ e($message) }}</div>
                             @enderror
                         </div>
 

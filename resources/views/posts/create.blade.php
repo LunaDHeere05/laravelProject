@@ -15,11 +15,11 @@
                             <label for="title" class="col-md-4 col-form-label text-md-end">Title</label>
 
                             <div class="col-md-6">
-                                <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autofocus>
+                                <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ e(old('title')) }}" required autofocus>
 
                                 @error('title')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ e($message) }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -28,10 +28,10 @@
                             <label for="content" class="col-md-4 col-form-label text-md-end">Content</label>
 
                             <div class="col-md-6">
-                                <textarea name="content" required>{{ old('content')}}</textarea>
+                                <textarea name="content" required>{{ e(old('content'))}}</textarea>
                                 @error('content')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ e($message) }}</strong>
                                     </span>
                                 @enderror
                             </div>

@@ -17,3 +17,6 @@ class Walkthrough extends Model
         return $this->hasMany('App\Models\Like');
     }
 }
+
+
+//genres

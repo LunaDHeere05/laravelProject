@@ -23,7 +23,7 @@
                                 <img src="{{ asset('storage/'.$post->cover_picture) }}" class="d-block w-100" alt="{{$post->title}}">
                             </a>
                                 <div class="blur-caption">
-                                    <h5>{{$post->title}}</h5>
+                                    <h5>{{e($post->title)}}</h5>
                                 </div>
                             </div>
                         @endforeach
@@ -50,8 +50,8 @@
                         <div class="image-container">
                             <img src="{{ asset('storage/'.$walkthrough->cover_picture) }}" alt="" class="cover_picture">
                         </div>
-                        <h3><a href="{{route('walkthroughs.show', $walkthrough->id)}}">{{ $walkthrough ->title }}</a></h3>
-                        <small>{{ $walkthrough ->created_at->format('d/m/Y') }}</small>
+                        <h3><a href="{{route('walkthroughs.show', $walkthrough->id)}}">{{ e($walkthrough ->title) }}</a></h3>
+                        <small>{{ e($walkthrough ->created_at->format('d/m/Y')) }}</small>
                     </div>
                     @endforeach
         </div>

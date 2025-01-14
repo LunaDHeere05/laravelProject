@@ -3,7 +3,7 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('assets/css/edit.css') }}">
 
-<div class="container">
+<div class="admin_container">
     <h2 class="text-center">User Management</h2>
 
     @if(session('status'))
@@ -47,11 +47,10 @@
         </div>
     </div>
 
-    <!-- User List -->
-    <div class="card">
+    <div class="card user-list-card">
         <div class="card-header">All Users</div>
         <div class="card-body">
-            <table class="table">
+            <table class="table user-table">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -63,14 +62,14 @@
                 <tbody>
                     @foreach($users as $user)
                         <tr>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->is_admin ? 'Admin' : 'User' }}</td>
+                            <td><a href="{{ route('profile', $user->id) }}">{{ e($user->name) }}</a></td>
+                            <td>{{ e($user->email) }}</td>
+                            <td>{{ ($user->is_admin ? 'Admin' : 'User')}}</td>
                             <td>
                                 @if(!$user->is_admin)
                                     <form method="POST" action="{{ route('admin.promote', $user->id) }}" style="display:inline;">
                                         @csrf
-                                        <button type="submit" class="btn btn-sm btn-success">Promote to Admin</button>
+                                        <button type="submit" class="btn btn-outline-primary btn-sm">Promote to Admin</button>
                                     </form>
                                 @else
                                     <span class="text-muted">Admin</span>

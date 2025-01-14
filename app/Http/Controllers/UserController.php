@@ -13,8 +13,8 @@ class UserController extends Controller
         $this->middleware('auth')->except('index', 'profile');
     }
 
-    public function profile($name){
-        $user = User::where('name', '=',$name)->firstOrFail();
+    public function profile($id){
+        $user = User::where('id', '=',$id)->firstOrFail();
         return view('users.profile', compact('user'));
     }
 
@@ -41,10 +41,10 @@ class UserController extends Controller
     ]);
 
 
-    $user->date_birth = $validated['date_birth'];
-    $user->name = $validated['name'];
-    $user->email = $validated['email'];
-    $user->abt_me = $validated['abt_me'];
+    $user->date_birth = strip_tags($validated['date_birth']);
+    $user->name = strip_tags($validated['name']);
+    $user->email = strip_tags($validated['email']);
+    $user->abt_me = strip_tags($validated['abt_me']);
     
     if($request->hasFile('picture')){
         $path = $request->file('picture')->store('profile_picture', 'public');

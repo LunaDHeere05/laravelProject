@@ -17,11 +17,11 @@
                             <label for="title" class="col-md-4 col-form-label text-md-end">Title</label>
 
                             <div class="col-md-6">
-                                <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ $post->title}}" required autofocus>
+                                <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ e($post->title)}}" required autofocus>
 
                                 @error('title')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ e($message) }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -30,10 +30,10 @@
                             <label for="content" class="col-md-4 col-form-label text-md-end">Content</label>
 
                             <div class="col-md-6">
-                                <textarea name="content" required>{{ $post->content}}</textarea>
+                                <textarea name="content" required>{{ e($post->content)}}</textarea>
                                 @error('content')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ e($message) }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -49,7 +49,7 @@
                                 
                                 @error('cover_picture')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ e($message) }}</strong>
                                     </span>
                                 @enderror
                             </div>

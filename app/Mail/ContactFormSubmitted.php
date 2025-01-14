@@ -14,7 +14,14 @@ class ContactFormSubmitted extends Mailable
     use Queueable, SerializesModels;
 
     public $data;
-    public function __construct()
+
+    /**
+     * Create a new message instance.
+     *
+     * @param array $data
+     */
+
+    public function __construct(array $data)
     {
         $this->data = $data;
     }
@@ -29,23 +36,13 @@ class ContactFormSubmitted extends Mailable
         );
     }
 
-    /**
-     * Get the message content definition.
-     */
-    public function content(): Content
-    {
-        return new Content(
-            view: 'contact.contact_form',
-        );
-    }
 
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
+        /**
+     * Build the message.
      */
-    public function attachments(): array
+    public function build()
     {
-        return [];
+        return $this->subject('Contact Form Submitted')
+                    ->text('contact.contact_plain', ['data' => $this->data]); // Using a plain text view
     }
 }

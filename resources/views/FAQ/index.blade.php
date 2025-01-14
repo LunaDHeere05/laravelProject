@@ -14,7 +14,7 @@
     @endauth
 
     @foreach($FAQsByCategory as $category => $FAQs)
-        <h3 class="mt-4">{{ $category ?? 'Uncategorized' }}</h3>
+        <h3 class="mt-4">{{ e($category) ?? 'Uncategorized' }}</h3>
         <div class="accordion" id="accordionExample{{ $loop->index }}">
             @foreach($FAQs as $index => $FAQ)
                 <div class="accordion-item">
@@ -25,7 +25,7 @@
                                 data-bs-target="#collapse{{ $loop->parent->index }}-{{ $index }}" 
                                 aria-expanded="{{ $index == 0 ? 'true' : 'false' }}" 
                                 aria-controls="collapse{{ $loop->parent->index }}-{{ $index }}">
-                            {{ $FAQ->question }}
+                            {{ e($FAQ->question) }}
                         </button>
                     </h2>
                     <div id="collapse{{ $loop->parent->index }}-{{ $index }}" 
@@ -33,7 +33,7 @@
                          aria-labelledby="heading{{ $loop->parent->index }}-{{ $index }}" 
                          data-bs-parent="#accordionExample{{ $loop->parent->index }}">
                         <div class="accordion-body">
-                            <strong>{{ $FAQ->answer }}</strong>
+                            <strong>{{ e($FAQ->answer) }}</strong>
                         </div>
                     </div>
                 </div>

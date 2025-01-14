@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ e(csrf_token()) }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ e(config('app.name', 'Laravel')) }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -34,9 +34,9 @@
                 </li>
                 <li>
                     @auth
-                    <a href="{{ route('profile', Auth::user()->name) }}" class="nav-item {{ request()->routeIs('profile') ? 'active' : '' }}">
+                    <a href="{{ route('profile', Auth::user()->id) }}" class="nav-item {{ request()->routeIs('profile') ? 'active' : '' }}">
                         <img src="{{ asset('assets/images/user-solid (2).svg') }}" alt="" style="width: 20px; height: 20px; margin-right: 10px;">
-                        <span class="nav-text">{{ Auth::user()->name }}</span>
+                        <span class="nav-text">{{ e(Auth::user()->name) }}</span>
                     </a>
                     @endauth
                 </li>

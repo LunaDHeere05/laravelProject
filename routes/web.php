@@ -19,7 +19,7 @@ Route::resource('walkthroughs', WalkthroughController::class);
 Route::get('like/{walkthroughId}', [LikeController::class, 'like'])->name('like');
 Route::get('like-post/{postId}', [LikeController::class, 'likePost'])->name('like.post');
 
-Route::get('user/{name}', [UserController::class, 'profile'])->name('profile');
+Route::get('user/{id}', [UserController::class, 'profile'])->name('profile');
 
 Auth::routes();
 

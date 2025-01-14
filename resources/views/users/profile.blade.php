@@ -22,8 +22,8 @@
                     <div class="pfpAndName">
                         <img src="{{asset('storage/'.$user->picture)}}" alt="Profile picture" class="profile-picture">
                         <div class="nameAndEmail">
-                        <h2>{{$user->name}}</h2>
-                        <p>{{$user->email}}</p>
+                        <h2>{{e($user->name)}}</h2>
+                        <p>{{e($user->email)}}</p>
                         </div>
                     </div>
                     <div class="profileNav">
@@ -60,16 +60,16 @@
                                 <p>E-mail</p>
                             </div>
                             <div class="user-info">
-                                <p>{{$user->name}}</p>
+                                <p>{{e($user->name)}}</p>
                                 @if($user->date_birth)
-                                <p>{{$user->date_birth}}</p>
+                                <p>{{e($user->date_birth)}}</p>
                                 @endif
-                                <p>{{$user->email}}</p>
+                                <p>{{e($user->email)}}</p>
                             </div>
                             @if($user->abt_me)
                             <div class="full-width">
                                 <p class="title">About me</p>
-                                <p>{{$user->abt_me}}</p>
+                                <p>{{e($user->abt_me)}}</p>
                             </div>
                             @endif
                         </div>
