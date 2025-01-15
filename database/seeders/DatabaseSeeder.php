@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             PostsTableSeeder::class,
             FAQsTableSeeder::class,
             WalkthroughsTableSeeder::class,
+            GenreSeeder::class,
+            GenreWalkthroughSeeder::class,
         ]);
     }
 }

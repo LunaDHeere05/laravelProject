@@ -16,6 +16,10 @@ class Walkthrough extends Model
     public function likes(){
         return $this->hasMany('App\Models\Like');
     }
+
+    public function genres(){
+        return $this->belongsToMany('App\Models\Genre');
+    }
 }
 
 

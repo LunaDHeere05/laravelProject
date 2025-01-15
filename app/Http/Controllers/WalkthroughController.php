@@ -7,6 +7,7 @@ use App\Models\Walkthrough;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Genre;
 
 class WalkthroughController extends Controller
 {
@@ -28,7 +29,8 @@ class WalkthroughController extends Controller
     }
 
     public function create(){
-        return view('walkthroughs.create');
+        $genres = Genre::all();
+        return view('walkthroughs.create', compact('genres'));
     }
 
     public function store(Request $request){
@@ -36,6 +38,8 @@ class WalkthroughController extends Controller
             'title'=>'required|min:3',
             'content'=>'required|min:20',
             'cover_picture'=>'image|mimes:jpeg,png,jpg|max:2048',
+            'genres' => 'array',
+            'genres.*' => 'exists:genres,id',
         ]);
 
         $walkthrough = new Walkthrough();
@@ -43,6 +47,10 @@ class WalkthroughController extends Controller
         $walkthrough->content = $validated['content'];
         $walkthrough->user_id = Auth::user()->id;
         $walkthrough->save();
+        
+        if ($request->has('genres')) {
+            $walkthrough->genres()->sync($validated['genres']);
+        }
 
         return redirect()->route('index')->with('status', 'Walkthrough created!');
     }
@@ -52,10 +60,11 @@ class WalkthroughController extends Controller
         if($walkthrough->user_id != Auth::user()->id){
             abort(403);
         }
-        return view('walkthroughs.edit', compact('walkthrough'));
+        $genres = Genre::all();
+        return view('walkthroughs.edit', compact('walkthrough','genres'));
     }
-    public function update($id, Request $request)
-{
+
+    public function update($id, Request $request){
     $walkthrough = Walkthrough::findOrFail($id);
     if ($walkthrough->user_id != Auth::user()->id) {
         abort(403);
@@ -65,6 +74,8 @@ class WalkthroughController extends Controller
         'title' => 'required|min:3',
         'content' => 'required|min:20',
         'cover_picture' => 'image|mimes:jpeg,png,jpg|max:2048',
+        'genres' => 'array',
+        'genres.*' => 'exists:genres,id',
     ]);
 
     if ($request->has('title')) {
@@ -79,6 +90,10 @@ class WalkthroughController extends Controller
         $path = $request->file('cover_picture')->store('walkthroughs', 'public');
         $walkthrough->cover_picture = $path;
     }
+    if ($request->has('genres')) {
+        $walkthrough->genres()->sync($validated['genres']);
+    }
+
 
     $walkthrough->save();
 

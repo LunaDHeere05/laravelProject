@@ -121,3 +121,16 @@
 .admin-controls input[type="submit"]:hover {
     background-color: #7e1391;
 }
+
+.badge {
+    
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.badge-primary {
+    border: 1px solid #7e1391;
+    border-radius: 12px;
+    padding: 0.2rem 0.5rem;
+    color: #7e1391;
+}

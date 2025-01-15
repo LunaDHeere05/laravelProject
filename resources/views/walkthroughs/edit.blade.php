@@ -55,6 +55,31 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="row mb-3">
+                            <label for="genres" class="col-md-4 col-form-label text-md-end">Genres</label>
+                            <div class="col-md-6">
+                            @foreach($genres as $genre)
+                                    <div class="form-check">
+                                        <input class="form-check-input" 
+                                               type="checkbox" 
+                                               name="genres[]" 
+                                               value="{{ $genre->id }}" 
+                                               id="genre{{ $genre->id }}"
+                                               {{ in_array($genre->id, old('genres', [])) ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="genre{{ $genre->id }}">
+                                            {{ $genre->name }}
+                                        </label>
+                                    </div>
+                                @endforeach
+                                @error('genres')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                        </div>
+                        </div>
+                        
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
