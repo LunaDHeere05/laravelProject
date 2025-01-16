@@ -24,7 +24,7 @@
         <li>MySQL</li>
         <li>PHP</li>
         <li>Git</li>
-        <li>An email delivery service (e.g., Mailtrap)</li>
+        <li>Mailtrap</li>
     </ul>
 
 <h2>Installation Steps</h2>
