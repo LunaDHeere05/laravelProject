@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LaravelProject README</title>
-</head>
+
 <body>
     <h1>LaravelProject</h1>
     <p>
@@ -97,6 +91,8 @@ MAIL_FROM_NAME="Gamers' Chronicles"
     <pre><code>php artisan migrate:fresh --seed</code></pre>
 
 <h3>7. Configure Storage</h3>
+    <p>Visit this google drive <a href="https://drive.google.com/drive/folders/1ktxOiNowXFUx2-rYp2fgMVQLyimEswdS?usp=sharing">Luna D'Heere google drive</a></p>
+    <p>From the google drive copy the public folder and place it in <code>/public/storage</code> and in the <code>/storage/app</code></p> <br>
     <p>Create a symbolic link for the <code>public/storage</code> directory:</p>
     <pre><code>php artisan storage:link</code></pre>
 
