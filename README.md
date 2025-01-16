@@ -48,16 +48,16 @@
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=laravelProject
-DB_USERNAME=<your-database-username>
-DB_PASSWORD=<your-database-password>
+DB_USERNAME="your-database-username"
+DB_PASSWORD="your-database-password"
 </code></pre>
 
 <h4>Mail Configuration:</h4>
     <pre><code>MAIL_MAILER=smtp
 MAIL_HOST=sandbox.smtp.mailtrap.io
 MAIL_PORT=2525
-MAIL_USERNAME=<your-mailtrap-username>
-MAIL_PASSWORD=<your-mailtrap-password>
+MAIL_USERNAME="your-mailtrap-username"
+MAIL_PASSWORD="your-mailtrap-password"
 MAIL_ENCRYPTION=null
 MAIL_FROM_ADDRESS="hello@example.com"
 MAIL_FROM_NAME="Gamers' Chronicles"
@@ -77,7 +77,7 @@ MAIL_FROM_NAME="Gamers' Chronicles"
             <pre><code>mysql -u root -p</code></pre>
         </li>
         <li>Create the database:
-            <pre><code>CREATE DATABASE laravel_project;</code></pre>
+            <pre><code>CREATE DATABASE laravelProject;</code></pre>
         </li>
         <li>Exit MySQL:
             <pre><code>exit</code></pre>
