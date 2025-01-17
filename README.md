@@ -105,28 +105,17 @@ MAIL_FROM_NAME="Gamers' Chronicles"
     <p>Visit the following URL in your browser to ensure the setup is complete:</p>
     <pre><code>http://127.0.0.1:8000</code></pre>
 
-<h2>Project Features</h2>
-    <h3>For Guests</h3>
-    <ul>
-        <li>Browse posts</li>
-        <li>Explore walkthroughs</li>
-    </ul>
-    <h3>For Registered Users</h3>
-    <ul>
-        <li>Like walkthroughs</li>
-        <li>Filter walkthroughs by genre</li>
-        <li>Create, edit, or delete your own walkthroughs</li>
-    </ul>
-    <h3>For Admins</h3>
-    <ul>
-        <li>Create and manage posts</li>
-        <li>Promote users to admin</li>
-        <li>Create users manually</li>
-    </ul>
-
 <h2>Additional Notes</h2>
     <h3>Resetting the Database</h3>
     <p>To reset and reseed the database, run:</p>
     <pre><code>php artisan migrate:fresh --seed</code></pre>
+
+<h2>Sources</h2>
+<ul>
+    <li><a href="https://chatgpt.com/share/678abb94-f81c-8002-9aa1-a2f742b019d6">chatGPT debugging</a></li>
+    <li><a href="https://chatgpt.com/share/678abc36-f6a8-8002-9f0c-c9e922d6bacf">chatGPT debugging</a></li>
+    <li><a href="https://chatgpt.com/share/678abd3d-b44c-8002-924a-610ca45dd3ab">chatGPT setup</a></li>
+    <li><a href="https://chatgpt.com/share/678abe25-6070-8002-90d5-22f19016981f">chatGPT debugging</a>
+    <li><a href="https://chatgpt.com/share/678abe54-0624-8002-b923-169a21cc6b0d">chatGPT CSS help</a></li>
 </body>
 </html>
