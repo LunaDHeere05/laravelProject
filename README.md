@@ -4,11 +4,6 @@
     <p>
         This project is built using <strong>WSL</strong>. To ensure a smooth setup, please complete all steps within your WSL/Linux environment.
     </p>
-    <p>
-        <strong>Tip:</strong> Clone the repository into a directory like <code>/home/{user}/projects</code> 
-        (e.g., <code>/home/username/projects</code>) to avoid potential debugging issues.
-    </p>
-
 <h2>Prerequisites</h2>
     <p>Make sure you have the following installed before proceeding:</p>
     <ul>
